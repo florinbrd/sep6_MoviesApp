@@ -1,0 +1,65 @@
+﻿@page "/"
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    ViewBag.HideNavBar = true;
+
+}
+<br />
+<h4>Welcome to Movies Web Application</h4>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post">
+        <table>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" id="email" name="Email" /></td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" id="password" name="Password" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit" asp-page-handler="Submit" />
+                    <input type="submit" value="Register" asp-page-handler="Register" />
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+    </form>
+    @Html.DisplayFor(model => model.Succes)
+
+    @if (Model.Succes.Equals("Logged in succesfully"))
+    {
+        <h4>Succesfully please go to Home page</h4>
+        <a class="text-dark" asp-area="" asp-page="/Home">Enter page</a>
+    }
+    @if (Model.Succes.Equals("Registered"))
+    {
+        <h4>Succesfully registered please sign in</h4>
+
+    }
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+

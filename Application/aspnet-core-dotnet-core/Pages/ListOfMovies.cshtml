@@ -1,0 +1,55 @@
+﻿@page
+@using aspnet_core_dotnet_core.Data
+@model aspnet_core_dotnet_core.Pages.ListOfMovies
+@inject LoginCredentials loginCredentials;
+
+
+@{
+ 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].movieId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].movieTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].movieYear)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.movies) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieYear)
+                </td>
+                <td> <form asp-page-handler="delete" asp-route-id=@item.movieId method="post">
+                                <button class="btn-light">Delete</button>
+                            </form></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

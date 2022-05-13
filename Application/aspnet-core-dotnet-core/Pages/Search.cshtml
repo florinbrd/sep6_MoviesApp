@@ -1,0 +1,75 @@
+﻿@page
+@model aspnet_core_dotnet_core.Pages.Search
+
+
+
+    
+
+        <h1>Movies</h1>
+
+
+
+        <form method="post">
+            <p>
+                Title: <input type="text" asp-for="SearchString"/>
+                <input type="submit" value="Search" asp-page-handler="Submit"/>
+            </p>
+        </form>
+
+        <form method="post">
+            <p>
+                Actor: <input type="text" asp-for="SearchStringActor"/>
+                <input type="submit" value="Search" asp-page-handler="Register"/>
+            </p>
+        </form>
+
+        <form method="post">
+            <p>
+                Director: <input type="text" asp-for="SearchStringDirector"/>
+                <input type="submit" value="Search" asp-page-handler="Search"/>
+            </p>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.listMovies[0].movieId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.listMovies[0].movieTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.listMovies[0].movieYear)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.listMovies)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movieId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movieTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movieYear)
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-ID="@item.movieId">Details</a>
+                        <a asp-page="./MyList" asp-route-ID="@item.movieId">Add to my list</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+
+
+
+
+
+    

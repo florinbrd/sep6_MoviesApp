@@ -1,0 +1,213 @@
+﻿@page "{id}"
+@using aspnet_core_dotnet_core.Data
+@model aspnet_core_dotnet_core.Pages.Details
+
+@{
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div class="center">
+<img src="@Model.movieDetails.Poster" alt="Paris" class="center" />
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movie[0].movieId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movie[0].movieTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movie[0].movieYear)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.movie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieYear)
+                </td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <b>Actors</b>
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.actors)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>
+                <b>Directors</b>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.directors)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ratings[0].rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ratings[0].votes)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ratings)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.votes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rating)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.comments[0].Email)
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.comments[0].Comment)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.comments)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Comment)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <form method="post">
+            <tr>
+                <td>Leave a comment: </td>
+                <td>
+                    <input type="text" id="Comment" name="Comment" />
+                </td>
+                <input type="submit" value="Submit" asp-page-handler="Submit" />
+            </tr>
+        </form>
+    </div>
+
+    <p> <u><b> Additional information from OMDb: </b></u></p>
+
+    <p> <b> Movie Title:</b> @Model.movieDetails.Title </p>
+    <p> <b> Movie Year:</b> @Model.movieDetails.Year </p>
+    <p> <b> Movie Genre:</b> @Model.movieDetails.Genre </p>
+    <p> <b> Movie Language:</b> @Model.movieDetails.Language </p>
+    <p> <b> Movie Awards:</b> @Model.movieDetails.Awards </p>
+    <p> <b> Movie Country:</b> @Model.movieDetails.Country </p>
+    <p> <b> Movie Plot:</b> @Model.movieDetails.Plot </p>
+
+
+
+
+    <a asp-page="./Search">Back to Index</a>
+</div>
+</body>
+</html>

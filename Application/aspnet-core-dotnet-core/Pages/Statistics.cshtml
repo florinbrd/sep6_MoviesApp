@@ -1,0 +1,51 @@
+﻿@page 
+@model StatisticsModel
+
+@{
+ 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+
+    <script src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <title>ColumnChart</title>
+</head>
+
+<body>
+
+
+
+    <div class="row">
+        <div class="col-lg-1">
+            <form method="post">
+                <input type="submit" value="Votes" asp-page-handler="Votes" />
+                <input type="submit" value="Rating" asp-page-handler="Rating" />
+
+                <select type="text" id="filtertype" name="filtertype">
+                    <option value="Director">Director</option>
+                    <option value="Year">Year</option>
+                </select>
+                <td><input type="text" id="value" name="Value" /></td>
+
+            </form>
+        </div>
+   
+    </div>
+
+
+    <form method="post">
+        <div>@Html.Raw(Model.ChartJson)</div>
+        <br />
+    </form>
+</body>
+</html>
+
+
+
+
+<script typdse="text/javascript" src="/Scripts/fusioncharts/fusioncharts.js"></script>
